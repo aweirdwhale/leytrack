@@ -1,0 +1,14 @@
+/home/olivier/Bureau/leytrack/src/interface/screens/menu/menu.cpp: In function 'void drawMenu(TFT_eSPI&)':
+/home/olivier/Bureau/leytrack/src/interface/screens/menu/menu.cpp:27:9: error: 'class TFT_eSPI' has no member named 'initMenu'
+   27 |     tft.initMenu();
+      |         ^~~~~~~~
+
+[92mUsed library[0m [92mVersion[0m [90mPath[0m
+[93mTFT_eSPI[0m     2.5.43  [90m/home/olivier/Arduino/libraries/TFT_eSPI[0m
+[93mSPI[0m          3.3.0   [90m/home/olivier/.arduino15/packages/esp32/hardware/esp32/3.3.0/libraries/SPI[0m
+[93mFS[0m           3.3.0   [90m/home/olivier/.arduino15/packages/esp32/hardware/esp32/3.3.0/libraries/FS[0m
+[93mSPIFFS[0m       3.3.0   [90m/home/olivier/.arduino15/packages/esp32/hardware/esp32/3.3.0/libraries/SPIFFS[0m
+
+[92mUsed platform[0m [92mVersion[0m [90mPath[0m
+[93mesp32:esp32[0m   3.3.0   [90m/home/olivier/.arduino15/packages/esp32/hardware/esp32/3.3.0[0m
+Error during build: exit status 1
