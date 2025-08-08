@@ -5,7 +5,7 @@
 
 TFT_eSPI tft = TFT_eSPI(); // Create TFT object
 
-void setup() {
+void _setup() {
     // Initialize the TFT display
     tft.init();
     tft.setRotation(0);
@@ -18,4 +18,4 @@ void setup() {
     initActionHandler();
 }
 
-void loop() {}
+void _loop() {}

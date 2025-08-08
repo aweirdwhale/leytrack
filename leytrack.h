@@ -5,7 +5,7 @@
 
 extern TFT_eSPI tft;
 
-void setup();
-void loop();
+void _setup();
+void _loop();
 
 #endif

@@ -3,9 +3,9 @@
 
 void setup() {
     Serial.begin(115200);
-    setup();
+    _setup();
 }
 
 void loop() {
-    loop();
+    _loop();
 }
