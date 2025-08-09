@@ -21,7 +21,9 @@ void _setup() {
     tft.fillScreen(0x0000);     // Clear the screen after splash
 
     // // Initialise the user experience
-    // initActionHandler();
+    initActionHandler();
 }
 
-void _loop() {}
+void _loop() {
+    handleActions(tft);            // Handle user actions
+}

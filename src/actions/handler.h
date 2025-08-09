@@ -4,7 +4,9 @@
 #include "../../config/config.h"
 #include <Arduino.h>
 
+#include <TFT_eSPI.h>
+
 void initActionHandler();    // Init butons
-void handleActions();        // Read and handle inputs
+void handleActions(TFT_eSPI &tft);        // Read and handle inputs
 
 #endif
