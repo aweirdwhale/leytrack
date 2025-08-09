@@ -11,11 +11,17 @@ void _setup() {
     tft.setRotation(0);
     tft.fillScreen(0x0000);
 
+    // debug
+    // tft.setTextSize(2);
+    // tft.setTextColor(0xFFFF, 0x0000); // Set text color to white with black background
+    // tft.setCursor(75, 120);
+    // tft.println("Leytrack");
+
     splashScreen(5000, tft);    // Show splash screen for 5 seconds
     tft.fillScreen(0x0000);     // Clear the screen after splash
 
-    // Initialise the user experience
-    initActionHandler();
+    // // Initialise the user experience
+    // initActionHandler();
 }
 
 void _loop() {}

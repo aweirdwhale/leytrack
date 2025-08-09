@@ -8,7 +8,7 @@
 #define MENU    17
 #define UP      5
 #define DOWN    18
-#define VALIDER      16
+#define VALIDER 16
 
 
 #endif
