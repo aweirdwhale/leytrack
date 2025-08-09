@@ -16,9 +16,9 @@ int currentIndex = 0;
 int lastIndex = -1;
 
 void initMenu(TFT_eSPI &tft) {
-    tft.init();
+    // tft.init();
     tft.setRotation(0);
-    tft.fillScreen(0x0000);
+    // tft.fillScreen(0x0000);
     tft.setTextSize(2);
 
 }

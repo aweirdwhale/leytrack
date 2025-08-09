@@ -4,7 +4,7 @@ void splashScreen(int duration, TFT_eSPI &tft) {
     unsigned long startTime = millis();
 
     // Array of texts to cycle through
-    const char* texts[] = {"LeyTrack", "vALPHA"};
+    const char* texts[] = {"LeyTrack", "vALPHA1.0"};
     int numTexts = sizeof(texts) / sizeof(texts[0]);
     int currentTextIndex = 0;
 

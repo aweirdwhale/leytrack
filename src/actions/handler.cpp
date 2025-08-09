@@ -1,6 +1,8 @@
 
 #include "handler.h"
 #include "../behavior/scanner/scanner.h"
+#include "../interface/screens/main/main.h"
+#include "../behavior/menu/menuBehavior.h"
 
 static const unsigned long debounceDelay = 50; // ms
 
@@ -32,13 +34,19 @@ void handleActions(TFT_eSPI &tft) {
             if (menuOn) {
                 menuOn = false; // Turn off menu if radar is started
                 Serial.println("Force Menu OFF");
+                stopMenu(tft);
             }
             radarOn = !radarOn;
             Serial.println(radarOn ? "Radar ON" : "Radar OFF");
 
             // action
 
-            startNewScan(tft);
+            if (radarOn) {
+                startNewScan(tft);
+            } else {
+                stopScan(tft);
+                drawMainScreen(tft);
+            }
 
 
         }
@@ -53,40 +61,53 @@ void handleActions(TFT_eSPI &tft) {
             if (radarOn) {
                 radarOn = false; // Turn off radar if menu is opened
                 Serial.println("Force Radar OFF");
+                stopScan(tft);
             }
             menuOn = !menuOn;
             Serial.println(menuOn ? "Menu ON" : "Menu OFF");
+
+            if (menuOn) {
+                //tft.fillScreen(0x0000); // directement dans menuBehavior
+                startMenu(tft);
+            } else {
+                stopMenu(tft);
+                drawMainScreen(tft);
+            }
+
         }
     }
     lastMenuState = menuState;
 
-    // === Bouton UP (momentary) ===
-    int upState = digitalRead(UP);
-    if (upState != lastUpState && (currentMillis - lastUpTime) > debounceDelay) {
-        lastUpTime = currentMillis;
-        if (upState == LOW) {
-            Serial.println("Haut");
+    if (!menuOn) { // menuBehavior prend le relai sur ces boutons
+        // === Bouton UP (momentary) ===
+        int upState = digitalRead(UP);
+        if (upState != lastUpState && (currentMillis - lastUpTime) > debounceDelay) {
+            lastUpTime = currentMillis;
+            if (upState == LOW) {
+                Serial.println("Haut");
+            }
         }
-    }
-    lastUpState = upState;
+        lastUpState = upState;
 
-    // === Bouton DOWN (momentary) ===
-    int downState = digitalRead(DOWN);
-    if (downState != lastDownState && (currentMillis - lastDownTime) > debounceDelay) {
-        lastDownTime = currentMillis;
-        if (downState == LOW) {
-            Serial.println("Bas");
+        // === Bouton DOWN (momentary) ===
+        int downState = digitalRead(DOWN);
+        if (downState != lastDownState && (currentMillis - lastDownTime) > debounceDelay) {
+            lastDownTime = currentMillis;
+            if (downState == LOW) {
+                Serial.println("Bas");
+            }
         }
-    }
-    lastDownState = downState;
+        lastDownState = downState;
 
-    // === Bouton OK (momentary) ===
-    int okState = digitalRead(VALIDER);
-    if (okState != lastOkState && (currentMillis - lastOkTime) > debounceDelay) {
-        lastOkTime = currentMillis;
-        if (okState == LOW) {
-            Serial.println("OK");
+        // === Bouton OK (momentary) ===
+        int okState = digitalRead(VALIDER);
+        if (okState != lastOkState && (currentMillis - lastOkTime) > debounceDelay) {
+            lastOkTime = currentMillis;
+            if (okState == LOW) {
+                Serial.println("OK");
+            }
         }
+        lastOkState = okState;
     }
-    lastOkState = okState;
+
 }

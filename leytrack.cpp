@@ -1,5 +1,7 @@
 #include "leytrack.h"
 #include "src/interface/screens/splash/splash.h"
+#include "src/interface/screens/main/main.h"
+
 #include "src/actions/handler.h"
 
 
@@ -18,10 +20,12 @@ void _setup() {
     // tft.println("Leytrack");
 
     splashScreen(5000, tft);    // Show splash screen for 5 seconds
-    tft.fillScreen(0x0000);     // Clear the screen after splash
+    // tft.fillScreen(0x0000);     // Clear the screen after splash
 
     // // Initialise the user experience
     initActionHandler();
+
+    drawMainScreen(tft);
 }
 
 void _loop() {

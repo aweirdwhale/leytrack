@@ -5,5 +5,6 @@
 
 
 void startNewScan(TFT_eSPI &tft);
+void stopScan(TFT_eSPI &tft);
 
 #endif

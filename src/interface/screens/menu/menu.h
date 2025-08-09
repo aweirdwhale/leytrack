@@ -13,7 +13,7 @@ extern int currentIndex;
 extern const char* menuItems[];
 
 void initMenu(TFT_eSPI &tft);
-void drawMenu(TFT_eSPI &tft, int selectedItem);
+void drawMenu(TFT_eSPI &tft);
 
 
 #endif
